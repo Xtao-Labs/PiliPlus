@@ -662,10 +662,22 @@ abstract final class VideoHttp {
     required Object aid,
     required Object type,
   }) {
-    return Request().post(
-      Api.historyReport,
-      data: {'aid': aid, 'type': type, 'csrf': Accounts.heartbeat.csrf},
-      options: Options(contentType: Headers.formUrlEncodedContentType),
+    final accounts = Accounts.account.values.toSet();
+    return Future.wait(
+      accounts.map(
+        (account) => Request().post(
+          Api.historyReport,
+          data: {
+            'aid': aid,
+            'type': type,
+            'csrf': account.csrf,
+          },
+          options: Options(
+            contentType: Headers.formUrlEncodedContentType,
+            extra: {'account': account},
+          ),
+        ),
+      ),
     );
   }
 
@@ -681,19 +693,27 @@ abstract final class VideoHttp {
     required VideoType videoType,
   }) {
     final isPugv = videoType == VideoType.pugv;
-    return Request().post(
-      Api.heartBeat,
-      data: {
-        if (isPugv) 'aid': ?aid else 'bvid': ?bvid,
-        'cid': cid,
-        'epid': ?epid,
-        'sid': ?seasonId,
-        'type': videoType.type,
-        'sub_type': ?subType,
-        'played_time': progress,
-        'csrf': Accounts.heartbeat.csrf,
-      },
-      options: Options(contentType: Headers.formUrlEncodedContentType),
+    final accounts = Accounts.account.values.toSet();
+    return Future.wait(
+      accounts.map(
+        (account) => Request().post(
+          Api.heartBeat,
+          data: {
+            if (isPugv) 'aid': ?aid else 'bvid': ?bvid,
+            'cid': cid,
+            'epid': ?epid,
+            'sid': ?seasonId,
+            'type': videoType.type,
+            'sub_type': ?subType,
+            'played_time': progress,
+            'csrf': account.csrf,
+          },
+          options: Options(
+            contentType: Headers.formUrlEncodedContentType,
+            extra: {'account': account},
+          ),
+        ),
+      ),
     );
   }
 
