@@ -1411,26 +1411,26 @@ packages:
     dependency: "direct main"
     description:
       name: permission_handler_android
-      sha256: baf93fbf80008c240b2cf5e6d62e9495ea7727fe327444d135c44bfff9af6b6e
+      sha256: "1e3bc410ca1bf84662104b100eb126e066cb55791b7451307f9708d4007350e6"
       url: "https://pub.dev"
     source: hosted
-    version: "14.1.1"
+    version: "13.0.1"
   permission_handler_apple:
     dependency: "direct main"
     description:
       name: permission_handler_apple
-      sha256: "82d31c9b321c45785ccd73bce9c63af17037116193b4000b998a4363059adb6e"
+      sha256: "79dfa1df734798aa3cfdad166d3a3698c206d8813de13516ea1071b5d7e2f420"
       url: "https://pub.dev"
     source: hosted
-    version: "9.6.5"
+    version: "9.4.10"
   permission_handler_platform_interface:
     dependency: "direct main"
     description:
       name: permission_handler_platform_interface
-      sha256: ed86a61c190258fdd65de395ea0632822e3415c1faec38eae0c31b479c28a531
+      sha256: eb99b295153abce5d683cac8c02e22faab63e50679b937fa1bf67d58bb282878
       url: "https://pub.dev"
     source: hosted
-    version: "4.4.1"
+    version: "4.3.0"
   petitparser:
     dependency: transitive
     description:
